@@ -44,7 +44,7 @@
                                   <p class="text-gray-500">Quantidade {{ product.quantity }}</p>
   
                                   <div class="flex">
-                                    <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remover</button>
+                                    <button @click="products.removeItem(product.id)" class="font-medium text-indigo-600 hover:text-indigo-500">Remover</button>
                                   </div>
                                 </div>
                               </div>
