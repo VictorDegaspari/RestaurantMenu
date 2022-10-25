@@ -21,7 +21,10 @@ export const useCheckoutList = defineStore('list', {
   getters: {
     getTotal(state) {
       return state.total;
-    } 
+    },
+    getList(state) {
+      return state.list;
+    }
   },
   
   actions: {
@@ -55,6 +58,11 @@ export const useCheckoutList = defineStore('list', {
             });
       }
     },
+
+    getItem(itemID) {
+      const index = this.list.findIndex(object => object.id === itemID);
+      return this.list[index];
+    }
 
   },
 });
