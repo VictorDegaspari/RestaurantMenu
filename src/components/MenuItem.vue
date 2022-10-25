@@ -5,13 +5,16 @@
         <img :src="product.imageSrc" :alt="product.imageAlt" class="h-full w-full object-cover object-center group-hover:opacity-75" />
       </div>
       <h3 class="mt-4 text-sm text-gray-700">{{ product.name }}</h3>
-      <p class="mt-1 text-lg font-medium text-gray-900">{{ product.price }}</p>
+      <div class="flex justify-between items-center">
+        <p class="mt-1 text-lg font-medium text-gray-900">R$ {{ product.price }}</p>
+        <CounterInput :obj="product"></CounterInput>
+      </div>
     </a>
   </div>
 </template>
 
 <script setup>
-
+import CounterInput from './CounterInput.vue';
 const products = [
   {
     id: 1,
@@ -19,8 +22,9 @@ const products = [
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_via-emilia.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
   {
     id: 2,
@@ -28,8 +32,9 @@ const products = [
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_tapiocaria-market-doce.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
   {
     id: 4,
@@ -37,53 +42,59 @@ const products = [
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_2nd-floor-noodle-bar.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
   {
-    id: 4,
+    id: 5,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_la-peruana-cevicheria.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
   {
-    id: 4,
+    id: 6,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_suri-ceviche-bar.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
   {
-    id: 4,
+    id: 7,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_lamen-kazu.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
   {
-    id: 4,
+    id: 8,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_killa-cevicheria-ceviches.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
   {
-    id: 4,
+    id: 9,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/2017/02/FEA/principal/53880_w840h0_1485965642lentrecote-de-paris.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 'R$35',
+    price: 35,
     color: 'Black',
+    quantity: 0
   },
 ];
 </script>

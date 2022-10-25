@@ -46,8 +46,8 @@
               </transition>
             </Popover>
 <!--   
-            <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Pricing</a>
-            <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a> -->
+            <a class="text-base font-medium text-gray-500 hover:text-gray-900">Pricing</a>
+            <a class="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a> -->
 
             <Popover class="relative" v-slot="{ open }">
               <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
@@ -77,7 +77,7 @@
                         </ul>
                       </div>
                       <div class="mt-5 text-sm">
-                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <a class="font-medium text-indigo-600 hover:text-indigo-500">
                           View all posts
                           <span aria-hidden="true"> &rarr;</span>
                         </a>
@@ -96,8 +96,8 @@
                   <input type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar pratos, pedidos..." required>
               </div>
           <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-            <a href="#" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Entrar</a>
-            <a href="#" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Admin</a>
+            <a class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Entrar</a>
+            <a class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Admin</a>
           </div>
         </div>
       </div>
@@ -128,17 +128,17 @@
             </div>
             <div class="space-y-6 py-6 px-5">
               <div class="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">Pricing</a>
+                <a class="text-base font-medium text-gray-900 hover:text-gray-700">Pricing</a>
   
-                <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">Docs</a>
+                <a class="text-base font-medium text-gray-900 hover:text-gray-700">Docs</a>
                 <a v-for="item in resources" :key="item.name" :href="item.href" class="text-base font-medium text-gray-900 hover:text-gray-700">{{ item.name }}</a>
               </div>
               <div>
-                <a href="#" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Sign up</a>
+                <a class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Sign up</a>
                 <p class="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?
                   {{ ' ' }}
-                  <a href="#" class="text-indigo-600 hover:text-indigo-500">Sign in</a>
+                  <a class="text-indigo-600 hover:text-indigo-500">Sign in</a>
                 </p>
               </div>
             </div>
@@ -148,8 +148,8 @@
     </Popover>
   </template>
   
-  <script setup>
-  import { Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue';
+<script setup>
+import { Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import {
 ArrowPathIcon,
