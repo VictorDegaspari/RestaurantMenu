@@ -19,11 +19,20 @@ export const useCheckoutList = defineStore('list', {
   }),
 
   getters: {
-    getTotal(state) {
+    getTotal: (state) => {
       return state.total;
     },
-    getList(state) {
+    
+    getList: (state) => {
       return state.list;
+    },
+
+    getItem: (state) => {
+      return (itemID) => { 
+        const index = state.list.findIndex(object => object.id === itemID);
+        if (index > -1) return state.list[index];
+        return {};
+      };
     }
   },
   
@@ -58,11 +67,5 @@ export const useCheckoutList = defineStore('list', {
             });
       }
     },
-
-    getItem(itemID) {
-      const index = this.list.findIndex(object => object.id === itemID);
-      return this.list[index];
-    }
-
   },
 });
