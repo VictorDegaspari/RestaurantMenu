@@ -2,7 +2,7 @@
     <TransitionRoot as="template" :show="open.show">
       <Dialog as="div" class="relative z-10" @close="open.change()">
         <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         </TransitionChild>
   
         <div class="fixed inset-0 overflow-hidden">
@@ -61,9 +61,13 @@
                       </div>
                       <p class="mt-0.5 text-sm text-gray-500">Taxas são calculadas na impressão.</p>
                       <div class="mt-6">
-                        <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
-                            Imprimir
-                        </a>
+                        <button 
+                          class="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                          @click.prevent="emit('generateReport')"
+                          :disabled="products.list.length < 1"
+                        >
+                          Imprimir
+                        </button>
                       </div>
                       <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
@@ -90,6 +94,7 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 import { XMarkIcon } from '@heroicons/vue/24/outline';
 import { useCheckoutList, useShowCheckoutStore } from '../stores/checkout';
 
+  const emit = defineEmits([' generateReport ']);
   const products = useCheckoutList();
   const open = useShowCheckoutStore();
 </script>

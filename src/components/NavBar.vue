@@ -45,10 +45,6 @@
                 </PopoverPanel>
               </transition>
             </Popover>
-<!--   
-            <a class="text-base font-medium text-gray-500 hover:text-gray-900">Pricing</a>
-            <a class="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a> -->
-
             <Popover class="relative" v-slot="{ open }">
               <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
                 <span>Ajuda</span>
@@ -129,7 +125,6 @@
             <div class="space-y-6 py-6 px-5">
               <div class="grid grid-cols-2 gap-y-4 gap-x-8">
                 <a class="text-base font-medium text-gray-900 hover:text-gray-700">Pricing</a>
-  
                 <a class="text-base font-medium text-gray-900 hover:text-gray-700">Docs</a>
                 <a v-for="item in resources" :key="item.name" :href="item.href" class="text-base font-medium text-gray-900 hover:text-gray-700">{{ item.name }}</a>
               </div>
@@ -171,13 +166,6 @@ XMarkIcon
       href: '#',
       icon: ChartBarIcon,
     },
-    // {
-    //   name: 'Engagement',
-    //   description: 'Speak directly to your customers in a more meaningful way.',
-    //   href: '#',
-    //   icon: CursorArrowRaysIcon,
-    // },
-    // { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
     {
       name: 'Pratos',
       description: "Connect with third-party tools that you're already using.",

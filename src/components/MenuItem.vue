@@ -25,7 +25,7 @@ export default {
     const products = [
       {
         id: 1,
-        name: 'Basic Tee',
+        name: 'Makizushi',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_via-emilia.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 35,
@@ -34,7 +34,7 @@ export default {
       },
       {
         id: 2,
-        name: 'Basic Tee',
+        name: 'Miso Soup',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_tapiocaria-market-doce.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 50,
@@ -43,7 +43,7 @@ export default {
       },
       {
         id: 4,
-        name: 'Basic Tee',
+        name: 'Sandwich',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_2nd-floor-noodle-bar.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 35,
@@ -52,7 +52,7 @@ export default {
       },
       {
         id: 5,
-        name: 'Basic Tee',
+        name: 'Nachos',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_la-peruana-cevicheria.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 100,
@@ -61,7 +61,7 @@ export default {
       },
       {
         id: 6,
-        name: 'Basic Tee',
+        name: 'Filé à Wellington',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_suri-ceviche-bar.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 55,
@@ -70,7 +70,7 @@ export default {
       },
       {
         id: 7,
-        name: 'Basic Tee',
+        name: 'Bobó Frito de Camarão',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_lamen-kazu.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 42,
@@ -79,7 +79,7 @@ export default {
       },
       {
         id: 8,
-        name: 'Basic Tee',
+        name: 'Feijoada',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/opt_w320h200/2017/02/FEA/53880_killa-cevicheria-ceviches.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 70,
@@ -88,7 +88,7 @@ export default {
       },
       {
         id: 9,
-        name: 'Basic Tee',
+        name: 'Peixe ensopado',
         imageSrc: 'https://www.guiadasemana.com.br/contentFiles/image/2017/02/FEA/principal/53880_w840h0_1485965642lentrecote-de-paris.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: 98,
