@@ -7,22 +7,22 @@
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                 <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
-                <input type="text" name="name" required id="name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                <input v-model="name.value" :ref="name.ref" type="text" name="name" required id="name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
                 <label for="price" class="block text-sm font-medium text-gray-700">Preço</label>
-                <input type="number" required name="price" id="price" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                <input v-model="price.value" :ref="price.ref" type="number" required name="price" id="price" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
 
                 <div class="col-span-6 sm:col-span-4">
                 <label for="description" class="block text-sm font-medium text-gray-700">Descrição breve</label>
-                <input type="text" name="description" id="description" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                <input v-model="detail.value" :ref="detail.ref" type="text" name="description" id="description" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
 
                 <div class="col-span-6">
                 <label for="image" class="block text-sm font-medium text-gray-700">Url da imagem</label>
-                <input type="text" name="image" id="image" autocomplete="image" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                <input v-model="image.value" :ref="image.ref" type="text" name="image" id="image" autocomplete="image" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
             </div>
             </div>
@@ -41,24 +41,48 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import LoadingComponent from "@/components/LoadingComponent.vue";
-export default {
-    components: {
-        LoadingComponent
-    },
-    setup() {
-        const isLoading = ref(false);
-        const onSubmit = async (data) => {
-            console.log(data)
-        };
+    import { ref } from "vue";
+    import { useForm } from 'vue-hooks-form';
+    import LoadingComponent from "@/components/LoadingComponent.vue";
+    import api from '../api';
+    import { useRouter } from 'vue-router';
 
-        let input = ref(null);
-        let error = ref(null);
-        const validateInput = () => {
-            error.value = input.value === "" ? "The Input field is required" : "";
-        };
-        return { input, error, validateInput, isLoading, onSubmit };
-    },
-};
+    export default {
+        components: {
+            LoadingComponent
+        },
+        setup() {
+            const isLoading = ref(false);
+            const { useField, handleSubmit } = useForm({
+                defaultValues: {},
+            });
+            const router = useRouter();
+            const onSubmit = async (data) => {
+                console.log(data)
+                api.post('api/products', data).then(() => {
+                    router.push('/');
+                })
+            };
+            const name = useField('name', {
+                rule: { required: true, message: "Preencha o nome" },
+            });
+            const detail = useField('detail', {
+                rule: { required: false },
+            });
+            const image = useField('image', {
+                rule: { required: true, message: "Preencha a imagem" },
+            });
+            const price = useField('price', {
+                rule: { required: true, message: "Preencha o preço" },
+            });
+            return { 
+                name, 
+                detail, 
+                image, 
+                price,
+                isLoading, 
+                onSubmit: handleSubmit(onSubmit)
+            };
+        },
+    };
 </script>
