@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import html2pdf from 'html2pdf.js';
-import { ref } from 'vue';
-import PreviewComponent from '../components/CheckoutPreview.vue';
-import MenuComponent from "../components/MenuItem.vue";
-import PrintComponent from '../components/PdfTemplate.vue';
-import { useShowCheckoutStore } from '../stores/checkout';
+  import PreviewComponent from '@/components/CheckoutPreview.vue';
+  import MenuComponent from "@/components/MenuItem.vue";
+  import PrintComponent from '@/components/PdfTemplate.vue';
+  import html2pdf from 'html2pdf.js';
+  import { ref } from 'vue';
+  import { useShowCheckoutStore } from '../stores/checkout';
 
   export default {
     components: {
@@ -37,7 +37,7 @@ import { useShowCheckoutStore } from '../stores/checkout';
     setup() {
       const show = useShowCheckoutStore();
       const pdf = ref(null);
-      
+
       const generateReport  = async () => {
         html2pdf(pdf.value.$el, {
 					margin: 3,

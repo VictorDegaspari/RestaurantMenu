@@ -46,7 +46,7 @@ export const useCheckoutList = defineStore('list', {
         this.total = this.total + item.price;
       }
       else {
-        this.total = this.total + this.list[index].price;
+        this.total = (parseFloat(this.total) + parseFloat(this.list[index].price)).toFixed(2);
         this.list[index].quantity++;
       } 
     },
@@ -57,11 +57,11 @@ export const useCheckoutList = defineStore('list', {
       if (index > -1) {
         this.list[index].quantity > 1 
           ? 
-            (this.list[index].quantity--, this.total = this.total - this.list[index].price) 
+            (this.list[index].quantity--, this.total = (parseFloat(this.total) -  parseFloat(this.list[index].price)).toFixed(2)) 
           : 
             this.list = this.list.filter(item => { 
               if (this.list[index].id == item.id) {
-                this.total = this.total - this.list[index].price;
+                this.total = this.total > 0 ? (parseFloat(this.total) - parseFloat(this.list[index].price)).toFixed(2) : 0;
               }
               return this.list[index].id !== item.id 
             });
