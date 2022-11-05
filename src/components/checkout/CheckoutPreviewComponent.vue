@@ -92,7 +92,7 @@
 <script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { XMarkIcon } from '@heroicons/vue/24/outline';
-import { useCheckoutList, useShowCheckoutStore } from '../stores/checkout';
+import { useCheckoutList, useShowCheckoutStore } from '@/stores/checkout';
 
   const emit = defineEmits([' generateReport ']);
   const products = useCheckoutList();

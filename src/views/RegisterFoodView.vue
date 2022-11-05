@@ -1,5 +1,5 @@
 <template>
-<div class="mx-auto max-w-2xl py-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+<div class="flex flex-col justify-center mx-auto max-w-2xl py-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8 min-h-full">
 <div class="mt-5 md:col-span-2 md:mt-0">
     <form @submit.prevent="onSubmit">
         <div class="overflow-hidden shadow sm:rounded-md">
@@ -31,7 +31,7 @@
                 type="submit" 
                 class="inline-flex justify-center text-center items-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Salvar
-                <Spinner v-show="loading"/>
+                <SpinnerComponent v-show="loading"/>
             </button>
             </div>
         </div>
@@ -44,12 +44,12 @@
     import { useForm } from 'vue-hooks-form';
     import api from '../api';
     import { useRouter } from 'vue-router';
-    import Spinner from '@/components/LoadingComponent.vue';
+    import SpinnerComponent from '@/components/LoadingComponent.vue';
     import { ref } from 'vue';
 
     export default {
         components: {
-            Spinner
+            SpinnerComponent
         },
         setup() {
             const loading = ref(false);
@@ -89,3 +89,6 @@
         },
     };
 </script>
+<style scoped>
+
+</style>

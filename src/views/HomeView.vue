@@ -20,9 +20,9 @@
 </template>
 
 <script>
-  import PreviewComponent from '@/components/CheckoutPreview.vue';
-  import MenuComponent from "@/components/MenuItem.vue";
-  import PrintComponent from '@/components/PdfTemplate.vue';
+  import PreviewComponent from '@/components/checkout/CheckoutPreviewComponent.vue';
+  import MenuComponent from '@/components/checkout/MenuItemComponent.vue';
+  import PrintComponent from '@/components/PdfTemplateComponent.vue';
   import html2pdf from 'html2pdf.js';
   import { ref } from 'vue';
   import { useShowCheckoutStore } from '../stores/checkout';
@@ -68,7 +68,7 @@
       box-shadow: 0px -15px 20px -14px rgba(0,0,0,0.4)
     }
     .home {
-      padding-bottom: 50px;
+      padding-bottom: 100px;
     }
   }
 </style>

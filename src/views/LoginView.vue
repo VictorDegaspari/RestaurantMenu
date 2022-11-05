@@ -47,7 +47,7 @@
             </svg>
           </span>
           Entrar
-          <Spinner v-show="loading" />
+          <SpinnerComponent v-show="loading" />
         </button>
       </div>
     </form>
@@ -61,13 +61,13 @@
   import api from '../api';
   import { useAuthStore } from '../stores/auth';
   import { useRouter } from 'vue-router';
-  import Spinner from '@/components/LoadingComponent.vue';
+  import SpinnerComponent from '@/components/LoadingComponent.vue';
 import { ref } from 'vue';
 
   export default {
     components: {
       MessageFormComponent,
-      Spinner
+      SpinnerComponent
     },
     setup() {
       const authStore = useAuthStore()

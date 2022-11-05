@@ -1,5 +1,5 @@
 <template>
-  <Popover class="relative bg-white" style="z-index: 1;">
+  <Popover class="fixed w-full bg-white" style="z-index: 1;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
         <div class="flex justify-start lg:w-0 lg:flex-1">
@@ -201,41 +201,41 @@
       const router = useRouter();
       const authStore = useAuthStore();
       const solutions = [
+        // {
+        //   name: 'Pedidos do dia',
+        //   description: 'Veja um resumo dos pedidos realizados hoje!',
+        //   path: '/demand',
+        //   icon: ChartBarIcon,
+        // },
         {
-          name: 'Pedidos do dia',
-          description: 'Get a better understanding of where your traffic is coming from.',
-          path: '/demand',
-          icon: ChartBarIcon,
-        },
-        {
-          name: 'Pratos',
-          description: "Connect with third-party tools that you're already using.",
+          name: 'Criar item',
+          description: "Adicione um novo prato ao seu cardápio!",
           path: '/food',
           icon: Squares2X2Icon,
         },
-        {
-          name: 'Em preparo',
-          description: 'Build strategic funnels that will drive your customers to convert',
-          path: '/preparing',
-          icon: ArrowPathIcon,
-        },
+        // {
+        //   name: 'Em preparo',
+        //   description: 'Visualize os pedidos em preparo!',
+        //   path: '/preparing',
+        //   icon: ArrowPathIcon,
+        // },
       ]
       const callsToAction = [
         { name: 'Watch Demo', path: '#', icon: PlayIcon },
         { name: 'Contact Sales', path: '#', icon: PhoneIcon },
       ]
       const resources = [
-        {
-          name: 'Help Center',
-          description: 'Get all of your questions answered in our forums or contact support.',
-          path: '/',
-          icon: LifebuoyIcon,
-        },
-        { 
-          name: 'Security', 
-          description: 'Understand how we take your privacy seriously.', 
-          path: '/', icon: ShieldCheckIcon 
-        },
+        // {
+        //   name: 'Help Center',
+        //   description: 'Get all of your questions answered in our forums or contact support.',
+        //   path: '/',
+        //   icon: LifebuoyIcon,
+        // },
+        // { 
+        //   name: 'Security', 
+        //   description: 'Understand how we take your privacy seriously.', 
+        //   path: '/', icon: ShieldCheckIcon 
+        // },
       ]
       onMounted(() => {
         authStore.setAuthUser();
