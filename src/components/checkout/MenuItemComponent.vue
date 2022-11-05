@@ -50,7 +50,7 @@
     setup() {
       const products = ref([]);
       const loading = ref(false);
-      const noContent = ref(true);
+      const noContent = ref(false);
 
       onMounted(() => {
         loading.value = true;
