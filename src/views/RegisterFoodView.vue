@@ -31,7 +31,7 @@
                 type="submit" 
                 class="inline-flex justify-center text-center items-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Salvar
-                <LoadingComponent v-show="isLoading"/>
+                <Spinner v-show="loading"/>
             </button>
             </div>
         </div>
@@ -41,27 +41,27 @@
 </template>
 
 <script>
-    import { ref } from "vue";
     import { useForm } from 'vue-hooks-form';
-    import LoadingComponent from "@/components/LoadingComponent.vue";
     import api from '../api';
     import { useRouter } from 'vue-router';
+    import Spinner from '@/components/LoadingComponent.vue';
 
     export default {
         components: {
-            LoadingComponent
+            Spinner
         },
         setup() {
-            const isLoading = ref(false);
+            let loading = false;
             const { useField, handleSubmit } = useForm({
                 defaultValues: {},
             });
             const router = useRouter();
             const onSubmit = async (data) => {
-                console.log(data)
+                loading = true;
                 api.post('api/products', data).then(() => {
+                    loading = false;
                     router.push('/');
-                })
+                });
             };
             const name = useField('name', {
                 rule: { required: true, message: "Preencha o nome" },
@@ -80,7 +80,7 @@
                 detail, 
                 image, 
                 price,
-                isLoading, 
+                loading, 
                 onSubmit: handleSubmit(onSubmit)
             };
         },

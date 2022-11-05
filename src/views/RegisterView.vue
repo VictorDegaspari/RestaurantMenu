@@ -77,6 +77,7 @@
             </svg>
           </span>
           Criar
+          <Spinner v-if="loading" />
         </button>
       </div>
     </form>
@@ -90,13 +91,16 @@
   import { useRouter } from 'vue-router';
   import api from '../api.js';
   import { useAuthStore } from '../stores/auth';
+  import Spinner from '@/components/LoadingComponent.vue';
 
   export default {
     components: {
-      MessageFormComponent
+      MessageFormComponent,
+      Spinner
     },
     setup() {
       const autStore = useAuthStore();
+      let loading = false;
       const { useField, handleSubmit } = useForm({
         defaultValues: {},
       });
@@ -115,9 +119,11 @@
       const router = useRouter();
 
       const onSubmit = (data) => {
+        loading = true;
         api.post('api/register', data).then(response => {
           let data = response.data.data;
           autStore.setAuthUser(data.token);
+          loading = false;
           router.push('/');
         });
       }
@@ -128,6 +134,7 @@
         password,
         c_password,
         onSubmit: handleSubmit(onSubmit),
+        loading
       }
     },
   }

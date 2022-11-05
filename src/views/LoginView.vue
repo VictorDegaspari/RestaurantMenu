@@ -45,6 +45,7 @@
             </svg>
           </span>
           Entrar
+          <Spinner v-show="loading"/>
         </button>
       </div>
     </form>
@@ -58,10 +59,12 @@
   import api from '../api';
   import { useAuthStore } from '../stores/auth';
   import { useRouter } from 'vue-router';
+  import Spinner from '@/components/LoadingComponent.vue';
 
   export default {
     components: {
-      MessageFormComponent
+      MessageFormComponent,
+      Spinner
     },
     setup() {
       const authStore = useAuthStore()
@@ -82,16 +85,21 @@
           message: "Preencha a senha com pelo menos 6 dígitos",
         },
       });
-
-      const onSubmit = (data) => api.post('api/login', data).then((response) => {
-        authStore.setAuthUser(response.data.data.token);
-        router.push('/');
-      });
+      let loading = false;
+      const onSubmit = (data) => { 
+        loading = true;
+        api.post('api/login', data).then((response) => {
+          authStore.setAuthUser(response.data.data.token);
+          loading = false;
+          router.push('/');
+        });
+      }
 
       return {
         email,
         password,
         onSubmit: handleSubmit(onSubmit),
+        loading
       }
     },
   }
