@@ -1,5 +1,19 @@
 <template>
   <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+    <NoContentComponent v-if="noContent"/>
+    <div v-for="product in products" :key="product.id">
+      <div class="group" v-show="!loading">
+        <div class="aspect-w-2 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+          <img :src="product.image" :alt="product.image" class="h-full w-full object-cover object-center group-hover:opacity-75" />
+        </div>
+        <h3 class="mt-4 text-sm text-gray-700">{{ product.name }}</h3>
+        <div class="flex justify-between items-center">
+          <p class="mt-1 text-lg font-medium text-gray-900">R$ {{ product.price }}</p>
+          <CounterInputComponent :obj="product" />
+        </div>
+      </div>
+    </div>
+
     <div v-for="product in [0, 1, 2, 3]" :key="product">
       <div role="status" class="p-4 max-w-sm rounded border border-gray-200 shadow animate-pulse md:p-6 dark:border-gray-700" v-show="loading">
         <div class="flex justify-center items-center mb-4 h-48 bg-gray-300 rounded dark:bg-gray-700 ">
@@ -16,20 +30,6 @@
           </div>
         </div>
         <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-    <NoContentComponent v-if="noContent"/>
-
-    <div v-for="product in products" :key="product.id">
-      <div class="group" v-show="!loading">
-        <div class="aspect-w-2 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-          <img :src="product.image" :alt="product.image" class="h-full w-full object-cover object-center group-hover:opacity-75" />
-        </div>
-        <h3 class="mt-4 text-sm text-gray-700">{{ product.name }}</h3>
-        <div class="flex justify-between items-center">
-          <p class="mt-1 text-lg font-medium text-gray-900">R$ {{ product.price }}</p>
-          <CounterInputComponent :obj="product" />
-        </div>
       </div>
     </div>
   </div>
