@@ -45,22 +45,25 @@
     import api from '../api';
     import { useRouter } from 'vue-router';
     import Spinner from '@/components/LoadingComponent.vue';
+    import { ref } from 'vue';
 
     export default {
         components: {
             Spinner
         },
         setup() {
-            let loading = false;
+            const loading = ref(false);
             const { useField, handleSubmit } = useForm({
                 defaultValues: {},
             });
             const router = useRouter();
             const onSubmit = async (data) => {
-                loading = true;
+                loading.value = true;
                 api.post('api/products', data).then(() => {
-                    loading = false;
+                    loading.value = false;
                     router.push('/');
+                }).catch(() => {
+                    loading.value = false;
                 });
             };
             const name = useField('name', {

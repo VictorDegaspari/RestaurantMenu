@@ -92,6 +92,7 @@
   import api from '../api.js';
   import { useAuthStore } from '../stores/auth';
   import Spinner from '@/components/LoadingComponent.vue';
+  import { ref } from 'vue';
 
   export default {
     components: {
@@ -100,7 +101,7 @@
     },
     setup() {
       const autStore = useAuthStore();
-      let loading = false;
+      const loading = ref(false);
       const { useField, handleSubmit } = useForm({
         defaultValues: {},
       });
@@ -119,12 +120,14 @@
       const router = useRouter();
 
       const onSubmit = (data) => {
-        loading = true;
+        loading.value = true;
         api.post('api/register', data).then(response => {
           let data = response.data.data;
           autStore.setAuthUser(data.token);
-          loading = false;
+          loading.value = false;
           router.push('/');
+        }).catch(() => {
+          loading.value = false;
         });
       }
 
